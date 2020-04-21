@@ -9,19 +9,10 @@ Gem::Specification.new do |spec|
   spec.version     = Usefultag::VERSION
   spec.authors     = ["zhong sheng"]
   spec.email       = ["nily.zhong@gmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Usefultag."
-  spec.description = "TODO: Description of Usefultag."
+  spec.homepage    = "https://github.com/zhongsheng/usefultag"
+  spec.summary     = "Usefultag"
+  spec.description = "Manage tags"
   spec.license     = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
