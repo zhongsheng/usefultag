@@ -1,5 +1,7 @@
 require "usefultag/engine"
 
 module Usefultag
-  # Your code goes here...
+  extend ActiveSupport::Autoload
+
+  autoload :Attribute
 end
