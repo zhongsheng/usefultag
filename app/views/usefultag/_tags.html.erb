@@ -1,0 +1,53 @@
+<% tags.each do |tag| %>
+    <span class="badge badge-info">
+        <%= tag.tag_name %>
+    </span>
+    <%= hidden_field_tag input_name, tag.tag_name %>
+<% end %>
+
+<input style='display: block;' type="text" name="entry_tags" autocomplete=off id='entry_useful_tag' value="" />
+<div id='<%= options['id'] %>_all' style='position: relative;'>
+    <ul style='display: none; position: absolute; width: 100%; margin: 0; padding: 5px;background: #CCC;list-style: none;'>
+        <button type='button' style='float: right;'>x</button>
+        <% all_tags.each do |tag| %>
+            <li>
+                <%= tag.tag_name %>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+ $(function(){
+
+     $('#<%= options['id'] %>_all button').click(function(){
+         $('#<%= options['id'] %>_all ul').hide()
+     })
+     $('#entry_useful_tag').focus( function() {
+         $('#<%= options['id'] %>_all ul').show()
+         return false
+     })
+
+
+     $('#<%= options['id'] %>_all li').click(function(){
+         let tag_wrap = $('#<%= options['id'] %>')
+         let val = this.innerText
+         $('#entry_useful_tag').before(`<span class="badge badge-info">${val}</span>
+<input type='hidden' name='<%= input_name %>' value='${val}'>`)
+         $('#<%= options['id'] %>_all ul').hide()
+     })
+
+     $('#entry_useful_tag').keypress(function(event){
+         if (event.which === 13 /* Enter */) {
+             /* let tag_wrap = $('#<%= options['id'] %>') */
+             let val = $('#entry_useful_tag').val()
+             $(this).before(`<span class="badge badge-info">${val}</span>
+<input type='hidden' name='<%= input_name %>' value='${val}'>`)
+             event.preventDefault();
+             this.value = ''
+         }
+     })
+
+ })
+</script>

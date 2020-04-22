@@ -5,6 +5,10 @@ module Usefultag
     extend ActiveSupport::Concern
 
     class_methods do
+      def all_tags(name)
+        Usefultag::Tag.where(name: name, record_type: self.name)
+      end
+
       def has_many_useful_tags(name)
         class_eval <<-CODE, __FILE__, __LINE__ + 1
           def #{name}
@@ -16,7 +20,8 @@ module Usefultag
           end
 
           def #{name}=(body)
-            {}
+            self.#{name}.delete_all
+            self.#{name}.new(body.uniq.compact.map{|tag_name| {name: '#{name}', tag_name: tag_name} })
           end
         CODE
 

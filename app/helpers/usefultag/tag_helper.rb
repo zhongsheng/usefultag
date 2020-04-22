@@ -10,13 +10,20 @@ module Usefultag
   module TagHelper
     cattr_accessor(:id, instance_accessor: false) { 0 }
 
-    def useful_tags(name, value = [], options = {})
+    def useful_tags(object, name, value = [], options = {})
       # render(:par)
 
+      pp options
+      content_tag(:div, options) do
       render(
-        partial: 'usefultag/tag/usefultags',
-        locals: { tags: value }
+        partial: 'usefultag/tags',
+        locals: {
+          all_tags: object.class.all_tags(name),
+          tags: value,
+          options: options,
+          input_name: "#{options['name']}[]" }
             )
+      end
       # binding.pry
       # options = options.symbolize_keys
 
@@ -42,7 +49,7 @@ module ActionView::Helpers
       options["id"] = dom_id(object, [options["id"], :useful_tag].compact.join("_")) \
         if object
 
-      @template_object.useful_tags(@method_name, value, options)
+      @template_object.useful_tags(object, @method_name, value, options)
     end
   end
 
