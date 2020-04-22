@@ -6,7 +6,7 @@ module Usefultag
 
     class_methods do
       def all_tags(name)
-        Usefultag::Tag.select('sum(id) as total, name, tag_name').group(:tag_name).where(name: name, record_type: self.name)
+        Usefultag::Tag.select('count(id) as total, tag_name').group(:tag_name).where(name: name, record_type: self.name)
       end
 
       def has_many_useful_tags(name)
