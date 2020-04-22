@@ -40,6 +40,8 @@ input.
 
 Just click on those added tags for remove them.
 
+Remember to permit params in Controller
+
 ## Manage Tags
 Mount usefultag to main app route.
 
