@@ -1,8 +1,9 @@
+    <%= hidden_field_tag input_name, '' %>
 <% tags.each do |tag| %>
-    <span class="badge badge-info">
+    <span onclick='remove_this_tag(this)' class="badge badge-info">
         <%= tag.tag_name %>
-    </span>
     <%= hidden_field_tag input_name, tag.tag_name %>
+    </span>
 <% end %>
 
 <input style='display: block;' type="text" name="entry_tags" autocomplete=off id='entry_useful_tag' value="" />
@@ -19,6 +20,9 @@
 
 
 <script type="text/javascript">
+ function remove_this_tag(tag){
+     $(tag).remove()
+ }
  $(function(){
 
      $('#<%= options['id'] %>_all button').click(function(){
@@ -33,8 +37,8 @@
      $('#<%= options['id'] %>_all li').click(function(){
          let tag_wrap = $('#<%= options['id'] %>')
          let val = this.innerText
-         $('#entry_useful_tag').before(`<span class="badge badge-info">${val}</span>
-<input type='hidden' name='<%= input_name %>' value='${val}'>`)
+         $('#entry_useful_tag').before(`<span onclick='remove_this_tag(this)' class="badge badge-info">${val}
+<input type='hidden' name='<%= input_name %>' value='${val}'></span>`)
          $('#<%= options['id'] %>_all ul').hide()
      })
 

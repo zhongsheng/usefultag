@@ -6,7 +6,7 @@ module Usefultag
 
     class_methods do
       def all_tags(name)
-        Usefultag::Tag.where(name: name, record_type: self.name)
+        Usefultag::Tag.select([:name, :tag_name, :record_type, :id]).group(:tag_name).where(name: name, record_type: self.name)
       end
 
       def has_many_useful_tags(name)
@@ -21,7 +21,7 @@ module Usefultag
 
           def #{name}=(body)
             self.#{name}.delete_all
-            self.#{name}.new(body.uniq.compact.map{|tag_name| {name: '#{name}', tag_name: tag_name} })
+            self.#{name}.new(body.uniq.compact.select{ |tag_name| tag_name.size > 0 }.map{|tag_name| {name: '#{name}', tag_name: tag_name} })
           end
         CODE
 
