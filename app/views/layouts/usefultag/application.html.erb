@@ -5,11 +5,14 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+        <script src="https://danish.dzunion.cn/cdn/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://danish.dzunion.cn/cdn/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <%= stylesheet_link_tag    "usefultag/application", media: "all" %>
 </head>
 <body>
 
-<%= yield %>
-
+    <div class="container">
+        <%= yield %>
+    </div>
 </body>
 </html>

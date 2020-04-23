@@ -4,9 +4,8 @@
         <tr>
             <th scope="col">name</th>
             <th scope="col">tag</th>
+            <th scope="col">id</th>
             <th scope="col">class</th>
-            <th scope="col">#</th>
-
         </tr>
     </thead>
     <tbody>
@@ -19,10 +18,10 @@
                 <%= tag.tag_name %>
             </td>
             <td>
-                <%= tag.record_type %>
+                <%= tag.record_id %>
             </td>
             <td>
-                <%= link_to 'Destroy', tag, method: :delete %>
+                <%=link_to tag.record_type, main_app.url_for(tag.record) %>
             </td>
         </tr>
 <% end %>
