@@ -5,8 +5,10 @@ require_dependency 'usefultag/application_controller'
 module Usefultag
   class TagsController < ApplicationController
     before_action :set_usefultag, only: %i[show edit update destroy]
+    def home
+    end
     def index
-      @tags = Usefultag::Tag.all
+      @tags = Usefultag::Tag.where(name: params[:name], record_type: params[:type])
     end
 
     def show; end
@@ -21,16 +23,16 @@ module Usefultag
     end
 
     def new; end
-  private
 
-  def set_usefultag
-    @tag = Usefultag::Tag.find(params[:id])
-  end
+    private
 
-  # Only allow a trusted parameter "white list" through.
-  def tag_params
-    params.require(:tag).permit(:name)
-  end
-  end
+    def set_usefultag
+      @tag = Usefultag::Tag.find(params[:id])
+    end
 
+    # Only allow a trusted parameter "white list" through.
+    def tag_params
+      params.require(:tag).permit(:name)
+    end
+  end
 end
