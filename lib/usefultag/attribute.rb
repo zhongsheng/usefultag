@@ -15,6 +15,10 @@ module Usefultag
             useful_tag_#{name}
           end
 
+          def #{name}_str
+            useful_tag_#{name}.map(&:tag_name).join(',')
+          end
+
           def #{name}?
             useful_tag_#{name}.present?
           end
