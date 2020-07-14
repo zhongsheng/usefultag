@@ -22,8 +22,10 @@ $ bundle
 has_many_useful_tags :book_tags
 
 # Mode methods
+book_tags_str('-')
+#=> tag1-tag2-tag3
 book_tags_str
-#=> tag1, tag2, tag3
+#=> tag1,tag2,tag3
 ```
 
 ## View

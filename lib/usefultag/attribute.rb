@@ -15,8 +15,8 @@ module Usefultag
             useful_tag_#{name}
           end
 
-          def #{name}_str
-            useful_tag_#{name}.map(&:tag_name).join(',')
+          def #{name}_str(delimiter=',')
+            useful_tag_#{name}.map(&:tag_name).join(delimiter)
           end
 
           def #{name}?
