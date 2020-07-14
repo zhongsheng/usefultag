@@ -20,6 +20,10 @@ $ bundle
 
 ``` ruby
 has_many_useful_tags :book_tags
+
+# Mode methods
+book_tags_str
+#=> tag1, tag2, tag3
 ```
 
 ## View
