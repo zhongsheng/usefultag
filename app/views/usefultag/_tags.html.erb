@@ -1,6 +1,6 @@
     <%= hidden_field_tag input_name, '' %>
 <% tags.each do |tag| %>
-    <span onclick='remove_this_tag(this)' class="badge badge-info">
+    <span onclick='this.remove()' class="badge badge-info">
         <%= tag.tag_name %>
     <%= hidden_field_tag input_name, tag.tag_name %>
     </span>
@@ -24,32 +24,27 @@
 
 
 <script type="text/javascript">
- function remove_this_tag(tag){
-     $(tag).remove()
- }
- $(function(){
+ (function(){
      let main_id = '#<%= options['id'] %>'
 
      $(`${main_id} button`).click(function(){
-         $('#<%= options['id'] %>_all ul').hide()
+         $(`${main_id}_all ul`).hide()
      })
      $(`${main_id} #entry_useful_tag`).focus( function() {
-         $('#<%= options['id'] %>_all ul').show()
+         $(`${main_id}_all ul`).show()
          return false
      })
 
 
      $(`${main_id} li`).click(function(){
-         let tag_wrap = $('#<%= options['id'] %>')
          let val = this.innerText
-         $(`${main_id} #entry_useful_tag`).before(`<span onclick='remove_this_tag(this)' class="badge badge-info">${val}
+         $(`${main_id} #entry_useful_tag`).before(`<span onclick='this.remove()' class="badge badge-info">${val}
 <input type='hidden' name='<%= input_name %>' value='${val}'></span>`)
          $(`${main_id} ul`).hide()
      })
 
      $(`${main_id} #entry_useful_tag`).keypress(function(event){
          if (event.which === 13 /* Enter */) {
-             /* let tag_wrap = $('#<%= options['id'] %>') */
              let val = $(`${main_id} #entry_useful_tag`).val()
              $(this).before(`<span class="badge badge-info">${val}</span>
 <input type='hidden' name='<%= input_name %>' value='${val}'>`)
@@ -58,5 +53,5 @@
          }
      })
 
- })
+ })()
 </script>
