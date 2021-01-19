@@ -6,7 +6,6 @@ module Usefultag
 
     class_methods do
       def all_tags(name, scope: nil)
-        pp 'all_tags'
         Usefultag::Tag.select('count(id) as total, tag_name')
           .group(:tag_name)
           .where(name: name, record_type: self.name, scope: scope)

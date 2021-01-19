@@ -1,6 +1,6 @@
 module Usefultag
   class Tag < ActiveRecord::Base
-    self.table_name = "userful_tags"
+    self.table_name = "useful_tags"
 
     belongs_to :record, polymorphic: true, touch: true
 

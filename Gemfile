@@ -13,3 +13,4 @@ gemspec
 
 # To use a debugger
 gem 'pry-byebug', group: [:development, :test]
+gem 'puma', group: [:development, :test]
