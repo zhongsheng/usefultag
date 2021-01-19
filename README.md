@@ -48,6 +48,29 @@ Just click on those added tags for remove them.
 
 Remember to permit params in Controller
 
+## Scope
+
+``` ruby
+class Comment < ApplicationRecord
+  belongs_to :post
+  has_many_useful_tags :tags, scope: :post_id
+end
+```
+
+This can set every post have diffrent tags on comments.
+
+``` html+erb
+<%= form_with(model: comment, local: true) do |form| %>
+  ...
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.useful_tags_field :tags, scope: comment.post_id %>
+  </div>
+  ...
+<% end %>
+
+```
+
 ## Manage Tags
 Mount usefultag to main app route.
 
