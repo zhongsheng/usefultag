@@ -18,7 +18,7 @@ module Usefultag
       render(
         partial: 'usefultag/tags',
         locals: {
-          all_tags: object.class.all_tags(name),
+          all_tags: object.class.all_tags(name, scope: options['scope']),
           tags: value,
           options: options,
           input_name: "#{options['name']}[]" }
