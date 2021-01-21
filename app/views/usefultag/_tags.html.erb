@@ -1,8 +1,8 @@
-    <%= hidden_field_tag input_name, '' %>
+<%= hidden_field_tag input_name, '' %>
 <% tags.each do |tag| %>
-    <span onclick='this.remove()' class="badge badge-info">
+    <span onclick='this.remove()' class="useful-tag-badge useful-tag-badge-added">
         <%= tag.tag_name %>
-    <%= hidden_field_tag input_name, tag.tag_name %>
+        <%= hidden_field_tag input_name, tag.tag_name %>
     </span>
 <% end %>
 
@@ -12,10 +12,10 @@
        autocomplete=off
        class='entry_useful_tag' value="" />
 <div id='<%= options['id'] %>_all' style='position: relative;'>
-    <ul style='display: none; position: absolute; width: 100%; margin: 0; padding: 5px;background: #CCC;list-style: none;'>
+    <ul style='display: none; position: absolute; width: 100%; margin: 0; padding: 5px;background: #333; color: #EEE; list-style: none;'>
         <button type='button' style='float: right;'>x</button>
         <% all_tags.each do |tag| %>
-            <li>
+            <li style='padding: 4px;'>
                 <%= tag.tag_name %>
             </li>
         <% end %>
@@ -46,9 +46,9 @@
          })
      })
 
-     tag_input.addEventListener('blur', function(){
-         tag_ul_hide()
-     })
+     /* tag_input.addEventListener('blur', function(){ */
+     /* tag_ul_hide() */
+     /* }) */
 
      tag_input.addEventListener('focus', function(){
          tag_ul_show()
