@@ -10,7 +10,7 @@
        type="text"
        name="entry_tags"
        autocomplete=off
-       id='entry_useful_tag' value="" />
+       class='entry_useful_tag' value="" />
 <div id='<%= options['id'] %>_all' style='position: relative;'>
     <ul style='display: none; position: absolute; width: 100%; margin: 0; padding: 5px;background: #CCC;list-style: none;'>
         <button type='button' style='float: right;'>x</button>
@@ -26,30 +26,55 @@
 <script type="text/javascript">
  (function(){
      let main_id = '#<%= options['id'] %>'
+     let main = document.getElementById('<%= options['id'] %>')
 
-     $(`${main_id} button`).click(function(){
-         $(`${main_id}_all ul`).hide()
+     let tag_ul_show = function(){
+         main.querySelectorAll('ul').forEach((ul)=>{
+             ul.style.display = '';
+         })
+     }
+     let tag_ul_hide = function(){
+         main.querySelectorAll('ul').forEach((ul)=>{
+             ul.style.display = 'none';
+         })
+     }
+     let tag_input = main.querySelectorAll('.entry_useful_tag')[0]
+
+     main.querySelectorAll('button').forEach((btn)=>{
+         btn.addEventListener('click', function(){
+             tag_ul_hide()
+         })
      })
-     $(`${main_id} #entry_useful_tag`).focus( function() {
-         $(`${main_id}_all ul`).show()
-         return false
+
+     tag_input.addEventListener('blur', function(){
+         tag_ul_hide()
      })
 
-
-     $(`${main_id} li`).click(function(){
-         let val = this.innerText
-         $(`${main_id} #entry_useful_tag`).before(`<span onclick='this.remove()' class="badge badge-info">${val}
-<input type='hidden' name='<%= input_name %>' value='${val}'></span>`)
-         $(`${main_id} ul`).hide()
+     tag_input.addEventListener('focus', function(){
+         tag_ul_show()
      })
 
-     $(`${main_id} #entry_useful_tag`).keypress(function(event){
+     let insert_tag = function(val){
+             htmlString = `<span onclick='this.remove()' class="useful-tag-badge">${val}
+<input type='hidden' name='<%= input_name %>' value='${val}'></span>`
+             tag_input.insertAdjacentHTML('beforebegin', htmlString);
+             tag_ul_hide()
+     }
+     main.querySelectorAll('li').forEach((li)=>{
+         li.addEventListener('click', function(e){
+             let val = e.target.innerText
+                          console.log(val)
+            insert_tag(val)
+         })
+     })
+
+     tag_input.addEventListener('keypress', function(event){
          if (event.which === 13 /* Enter */) {
-             let val = $(`${main_id} #entry_useful_tag`).val()
-             $(this).before(`<span class="badge badge-info">${val}</span>
-<input type='hidden' name='<%= input_name %>' value='${val}'>`)
+             console.log(tag_input)
+             let val = tag_input.value
+             insert_tag(val)
              event.preventDefault();
-             this.value = ''
+             tag_input.value = ''
          }
      })
 

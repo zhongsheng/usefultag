@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    usefultag (0.2.0)
+    usefultag (0.3.0)
       rails (~> 6.1)
 
 GEM
@@ -86,11 +86,9 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
-    mini_portile2 (2.5.0)
     minitest (5.14.3)
     nio4r (2.5.4)
-    nokogiri (1.11.1)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     pry (0.13.1)
       coderay (~> 1.1)
