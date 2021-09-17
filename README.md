@@ -13,7 +13,20 @@ gem 'usefultag'
 
 And then execute:
 ```bash
-$ bundle
+bundle
+rails usefultag:install:migrations
+rails db:migrate
+```
+
+## AcitveController
+
+``` ruby
+private
+def book_params
+  ...
+  book_tags: []
+  ...
+end
 ```
 
 ## AcitveRecord Model
