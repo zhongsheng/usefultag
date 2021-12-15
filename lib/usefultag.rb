@@ -1,4 +1,6 @@
+require "usefultag/version"
 require "usefultag/engine"
+require "usefultag/attribute"
 
 module Usefultag
   extend ActiveSupport::Autoload

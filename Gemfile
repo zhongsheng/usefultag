@@ -12,5 +12,8 @@ gemspec
 # your gem to rubygems.org.
 
 # To use a debugger
-gem 'pry-byebug', group: [:development, :test]
-gem 'puma', group: [:development, :test]
+group :development do
+ gem 'pry-byebug'
+ gem 'sqlite3'
+ gem 'puma'
+end
