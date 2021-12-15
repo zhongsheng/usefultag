@@ -3,11 +3,6 @@ require "action_view/helpers/tags/placeholderable"
 
 module Usefultag
   module TagHelper
-  end
-end
-
-module Usefultag
-  module TagHelper
     cattr_accessor(:id, instance_accessor: false) { 0 }
 
     def useful_tags(object, name, value = [], options = {})
