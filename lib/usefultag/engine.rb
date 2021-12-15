@@ -1,3 +1,5 @@
+
+require "rails/engine"
 require 'usefultag'
 
 module Usefultag
@@ -9,7 +11,7 @@ module Usefultag
         include Usefultag::Attribute
       end
     end
-    initializer "usefultag.helper" do
+    initializer "usefultag.helper",  before: :load_config_initializers do
       ActiveSupport.on_load(:action_controller_base) do
         helper Usefultag::Engine.helpers
       end
