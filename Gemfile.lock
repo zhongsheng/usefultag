@@ -69,12 +69,12 @@ GEM
     builder (3.2.4)
     byebug (11.1.2)
     coderay (1.1.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     erubi (1.10.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
-    i18n (1.8.11)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
@@ -84,9 +84,9 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.15.0)
+    minitest (5.17.0)
     nio4r (2.5.8)
-    nokogiri (1.12.5-x86_64-darwin)
+    nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -96,7 +96,7 @@ GEM
       pry (~> 0.13.0)
     puma (5.5.2)
       nio4r (~> 2.0)
-    racc (1.6.0)
+    racc (1.6.2)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -129,7 +129,7 @@ GEM
     rake (13.0.6)
     sqlite3 (1.4.2)
     thor (1.1.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -137,7 +137,7 @@ GEM
     zeitwerk (2.5.1)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   pry-byebug
